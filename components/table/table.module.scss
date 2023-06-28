@@ -1,0 +1,36 @@
+#custom_table {
+    width: 100%;
+    max-width: 90vw;
+    overflow-x: scroll;
+
+    #table_header {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        div {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+    }
+
+
+    #table_td {
+        display: grid;
+        margin: 1em 0;
+        gap: 30px;
+        align-items: center;
+        white-space: nowrap;
+        word-wrap: break-word;
+        grid-template-columns: auto 1fr 1fr 1fr auto;
+
+        .sumary_icon {
+            padding: .8em .9em;
+            border-radius: 50%;
+            cursor: pointer;
+            background-color: rgb(245, 244, 244);
+        }
+    }
+}

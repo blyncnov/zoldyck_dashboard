@@ -1,27 +1,119 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  text-decoration: none;
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+html,
+body {
+  font-size: 14px;
+  font-weight: 400;
+  font-style: normal;
+  min-height: 100vh;
+  line-height: normal;
+  scroll-timeline: inherit;
+  font-family: "Jost", sans-serif;
+  -o-font-smoothing: antialiased;
+  text-rendering: optimizeSpeed;
+  -moz-font-smoothing: antialiased;
+  scroll-behavior: smooth !important;
+  background-color: rgb(255, 255, 255);
+  -webkit-tap-highlight-color: transparent;
+}
+
+#Main__Header {
+  width: 100%;
+  position: relative;
+  /* min-height: 80vh; */
+  background-color: #ffffff !important;
+  background-image: linear-gradient(to bottom, #f3f9fa79, #fff, #fff, #fff);
+}
+
+#container {
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+  /* max-width: 1200px; */
+}
+
+section {
+  background-color: #ffffff !important;
+  position: relative !important;
+  z-index: 5;
+}
+
+canvas {
+  width: 100% !important;
+  min-width: 100% !important;
+  height: 100% !important;
+  min-height: 100% !important;
+}
+
+.invoice_status_sucess {
+  padding: 0.5em 0.4em;
+  text-align: center;
+  border-radius: 4px;
+  background-color: #edfaf0;
+  cursor: pointer;
+}
+
+.invoice_status_err {
+  padding: 1em;
+  background-color: #faf0f0;
+}
+
+@media (min-width: 768px) {
+  footer {
+    width: 100% !important;
+    position: sticky;
+    bottom: 0;
+    left: 0;
+    right: 0;
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+/* X-Small devices (portrait phones, less than 576px)
+ No media query for `xs` since this is the default in Bootstrap */
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+  #container {
+    max-width: 100%;
+  }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  #container {
+    max-width: 100% !important;
+  }
+}
+
+/* Large devices (desktops, 1000px and up) */
+@media (min-width: 900px) {
+  #container {
+    max-width: 1300px !important;
+  }
+}
+
+/* X-Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  #container {
+    max-width: 1200px;
+  }
+}
+
+/* XX-Large devices (larger desktops, 1400px and up) */
+@media (min-width: 1400px) {
+  #container {
+    max-width: 1400px !important;
+  }
+}
+
+#active_link_enable {
+  background-color: var(--black) !important;
+  color: white !important;
 }

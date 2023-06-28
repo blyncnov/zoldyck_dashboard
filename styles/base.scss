@@ -1,0 +1,149 @@
+// SCSS Dashboard Styles
+// @import "./dashboard/index.scss";
+
+// Root Variables
+:root {
+  --black: #181818;
+  --white: #ffffff;
+  --black-100: #333333;
+  --primary-color: #251851;
+  --tertiary-color: rgb(51, 135, 253);
+  --secondary-color: #4ac3c6;
+  --secondary-color-100: #c3fdfe;
+  --text-color: #14165d;
+
+  --border: 1px solid #ccc;
+  --shadow: 0 1px;
+  --cream-color: #eee3d9;
+  --dark-cream-color: #fed5af;
+  --header-color: #F8FBFE;
+
+  --heading-size: 26pt;
+  --title-size: 16pt;
+  --description-size: 15pt;
+
+  --rav-shadow: 0 5px 15px 0 rgba(37, 85, 152, 0.15);
+}
+
+button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+  white-space: nowrap;
+  outline: none;
+  padding: 0.75em 2em !important;
+  border-radius: 7px;
+  font-weight: 400;
+  line-height: 1.5;
+  font-size: 16px;
+  line-height: 1.133;
+  text-align: center;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  box-shadow: var(--rav-shadow) !important;
+  background-color: var(--secondary-color) !important;
+  color: var(--primary-color) !important;
+  border-width: 1.5px;
+  border-style: solid;
+  border-color: var(--primary-color) !important;
+  transition: all 0.2s ease-in;
+}
+
+button[data-btn="primary"] {
+  color: var(--white) !important;
+  background-color: var(--primary-color) !important;
+}
+
+button[data-btn="transparent"] {
+  color: var(--primary-color) !important;
+  background-color: transparent !important;
+}
+
+button:hover {
+  transform: translateY(2%) !important;
+}
+
+button:active {
+  box-shadow: 0 5px 15px 0 rgba(37, 85, 152, 0.928);
+  transform: translateY(2%) !important;
+}
+
+input,
+textarea {
+  width: 100% !important;
+  font-size: 14px;
+  font-weight: 400;
+  padding: 18px 1em 18px 35px;
+  display: block;
+  outline: none;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 100%;
+  border-radius: 7px;
+  color: rgb(53, 61, 66);
+  font-family: "Inter", sans-serif;
+  border: 1px solid #dddddd;
+  background-color: transparent !important;
+  box-sizing: border-box;
+
+
+  &::placeholder {
+    color: #111232 !important;
+    background-color: transparent !important;
+    opacity: 0.5;
+    font-weight: 400;
+  }
+}
+
+input:active {
+  background-color: transparent !important;
+}
+
+input[type=text]:focus {
+  background-color: transparent !important;
+}
+
+
+/*Change text in autofill textbox*/
+input:-webkit-autofill {
+  -webkit-text-fill-color: #333 !important;
+}
+
+.dashboard_header {
+  width: 100%;
+  padding: 1.5em 1em;
+  line-height: 1.5;
+  border: 1px;
+  background-color: var(--white);
+  border: 1px solid rgba(240, 233, 233, 0.531);
+
+  p {
+    color: #333 !important;
+  }
+}
+
+.dashboard_special_container,
+#special_shadow_container {
+  width: 100%;
+  padding: 1.5em 1em;
+  line-height: 1.5;
+  border: 1px;
+  background-color: var(--white);
+  border: 1px solid rgba(240, 233, 233, 0.531);
+}
+
+#special_shadow_container {
+  box-shadow: #111232;
+  border-radius: 3px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 2px;
+}
+
+
+#gradient {
+  background-image: linear-gradient(to left, #e8f7f8, #fff, #fff) !important;
+}

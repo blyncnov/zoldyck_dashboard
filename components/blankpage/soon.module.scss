@@ -1,0 +1,46 @@
+#coming_soon_container {
+    width: 100%;
+    display: flex;
+    gap: 30px;
+    text-align: center;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    height: calc(100vh);
+    background-color: #ffffff;
+
+    h1 {
+        font-size: 50px;
+        opacity: .2;
+
+        @media(max-width:767px) {
+            font-size: 40px;
+        }
+    }
+
+    .social_link_up {
+        display: flex;
+        gap: 15px;
+        flex-direction: column;
+
+        .social_button {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 13px 2em;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .twitter_button {
+            background-color: #327be8;
+        }
+
+        .linkedln_button {
+            background-color: #0177B5;
+        }
+    }
+}

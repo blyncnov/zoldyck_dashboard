@@ -1,118 +1,137 @@
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
+import React from "react";
+import Image from "next/image";
 
-const inter = Inter({ subsets: ['latin'] })
+// Ambassador Image
+import Meganorton from "@/public/model/jeremy.jpeg";
 
-export default function Home() {
+// React Icons
+import { BiLike } from "react-icons/bi";
+import { RiTimerLine } from "react-icons/ri";
+import { IoCallOutline } from "react-icons/io5";
+import { MdDateRange, MdOutlineAnalytics } from "react-icons/md";
+import { BsCameraVideo, BsThreeDotsVertical } from "react-icons/bs";
+
+// Dashboard Style
+import style from "./dashboard.module.scss";
+
+// Chat Components
+import Chat from "@/components/chat";
+
+// Chart Js Component
+import BarChart from "@/chart/BarChart";
+
+// Table Component
+import TableComponent from "@/components/table";
+
+// Icon Style
+const IconSettings = {
+  fontSize: "16px",
+  fontWeight: "800",
+};
+
+// Fake Data
+const FakeData = [
+  {
+    id: 1,
+    icon: <BiLike style={IconSettings} />,
+    title: "Finished",
+    nos: "18",
+    desc: "+8 tasks",
+    up: true,
+  },
+  {
+    id: 2,
+    icon: <RiTimerLine style={IconSettings} />,
+    title: "Tracked",
+    nos: "31h",
+    desc: "+8 tasks",
+    up: false,
+  },
+  {
+    id: 3,
+    icon: <MdOutlineAnalytics style={IconSettings} />,
+    title: "Efficiency",
+    nos: "93%",
+    desc: "+12%",
+    up: true,
+  },
+];
+
+const Dashboard = () => {
   return (
-    <main
-      className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
-    >
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">pages/index.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <>
+      <div id={style.dashboard_layout}>
+        <div className={style.dashboard_main_section}>
+          <section className={style.dashboard_welcome_container}>
+            <div className={style.dashboard_flex_spacer}>
+              <h2>Hello, Jeremy </h2>
+              <p>Track team progress here, you almost reach a goal!</p>
+            </div>
+            <div className={style.dashboard_column_spacer}>
+              <p>18, May 2023</p>
+              <MdDateRange />
+            </div>
+          </section>
+          <section>
+            <div className={style.dashboard_summary_container}>
+              {FakeData.map((data) => {
+                return (
+                  <div key={data.id} className={style.dashboard_summary_column}>
+                    <div className={style.sumary_icon}>{data.icon}</div>
+                    <div className={style.sumary_content}>
+                      <h4>{data.title} </h4>
+                      <div className={style.dashboard_summary_row_details}>
+                        <h3> {data.nos} </h3>
+                        <li className={data.up ? style.up : style.down}>
+                          {data.desc}{" "}
+                        </li>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </section>
+          <br />
+          <section>
+            <BarChart />
+          </section>
+          <section>
+            <TableComponent />
+          </section>
+        </div>
+
+        <div className={style.dashboard_side_section}>
+          <div className={style.dashboard_quick_profile}>
+            <div className={style.profile_image_container}>
+              <Image src={Meganorton} alt="Meganorton" />
+            </div>
+            <h3>Jeremy | TypeScript Engineer</h3>
+            <li>@jeremytechie</li>
+            <div className={style.dashboard_choose_mode}>
+              <div>
+                <IoCallOutline style={IconSettings} />
+              </div>
+              <div>
+                <BsCameraVideo style={IconSettings} />
+              </div>
+              <div>
+                <BsThreeDotsVertical style={IconSettings} />
+              </div>
+            </div>
+          </div>
+
+          <section>
+            <Chat />
+          </section>
         </div>
       </div>
+    </>
+  );
+};
 
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700/10 after:dark:from-sky-900 after:dark:via-[#0141ff]/40 before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+export default Dashboard;
 
-      <div className="mb-32 grid text-center lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Discover and deploy boilerplate example Next.js&nbsp;projects.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
-}
+Dashboard.getLayout = function getLayout(page: any) {
+  return page;
+};
